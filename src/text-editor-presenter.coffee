@@ -607,6 +607,7 @@ class TextEditorPresenter
 
   clearScopedCharacterWidths: ->
     @characterWidthsByScope = {}
+    @model.clearScopedCharWidths()
 
   pixelPositionForScreenPosition: (screenPosition, clip=true) ->
     screenPosition = Point.fromObject(screenPosition)
