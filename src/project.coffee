@@ -138,6 +138,10 @@ class Project extends Model
       projectPath
     else
       path.dirname(projectPath)
+
+    return if @getPaths().some (existingPath) ->
+      existingPath is directory or directory.indexOf(path.join(existingPath, path.sep)) is 0
+
     @rootDirectories.push(new Directory(directory))
 
     if repo = GitRepository.open(directory, project: this)
